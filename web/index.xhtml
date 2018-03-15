@@ -6,7 +6,16 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h1>Exemple de JSF into EJB into décale de JPA </h1>
+        
+        <h:form>
+            <h:dataTable value="#{manufacturerController.manufacturers}" var="items">
+                <h:column>
+                    <h:outputText value="#{items.name}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
     </h:body>
 </html>
 
