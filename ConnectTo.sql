@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users` (
   `idUsers` INT NOT NULL AUTO_INCREMENT,
   `idRoles` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `password` CHAR(32) NOT NULL,
+  `password` CHAR(64) NOT NULL,
   PRIMARY KEY (`idUsers`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC),
   INDEX `FK_Roles_idx` (`idRoles` ASC),
