@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template/common/commonLayout.xhtml">
+        <!--<ui:define name="title">
+            <h:outputText value="#{bundle.EditServicesTitle}"></h:outputText>
+        </ui:define>-->
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditServicesLabel_idServices}" for="idServices" />
+                    <h:inputText id="idServices" value="#{servicesController.selected.idServices}" title="#{bundle.EditServicesTitle_idServices}" required="true" requiredMessage="#{bundle.EditServicesRequiredMessage_idServices}"/>
+                    <h:outputLabel value="#{bundle.EditServicesLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{servicesController.selected.name}" title="#{bundle.EditServicesTitle_name}" required="true" requiredMessage="#{bundle.EditServicesRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.EditServicesLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{servicesController.selected.description}" title="#{bundle.EditServicesTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditServicesLabel_credential}" for="credential" />
+                    <h:inputText id="credential" value="#{servicesController.selected.credential}" title="#{bundle.EditServicesTitle_credential}" required="true" requiredMessage="#{bundle.EditServicesRequiredMessage_credential}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{servicesController.update}" value="#{bundle.EditServicesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditServicesViewLink}"/>
+                <br />
+                <h:commandLink action="#{servicesController.prepareList}" value="#{bundle.EditServicesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditServicesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

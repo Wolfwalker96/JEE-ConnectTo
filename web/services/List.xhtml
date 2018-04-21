@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template/common/commonLayout.xhtml">
+        <!--<ui:define name="title">
+            <h:outputText value="#{bundle.ListServicesTitle}"></h:outputText>
+        </ui:define>-->
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListServicesEmpty}" rendered="#{servicesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{servicesController.items.rowCount > 0}">
+                    <h:outputText value="#{servicesController.pagination.pageFirstItem + 1}..#{servicesController.pagination.pageLastItem + 1}/#{servicesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{servicesController.previous}" value="#{bundle.Previous} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{servicesController.next}" value="#{bundle.Next} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{servicesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServicesTitle_idServices}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idServices}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServicesTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServicesTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServicesTitle_credential}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.credential}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{servicesController.prepareView}" value="#{bundle.ListServicesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{servicesController.prepareEdit}" value="#{bundle.ListServicesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{servicesController.destroy}" value="#{bundle.ListServicesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{servicesController.prepareCreate}" value="#{bundle.ListServicesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListServicesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

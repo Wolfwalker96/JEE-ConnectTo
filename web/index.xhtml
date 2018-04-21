@@ -4,10 +4,11 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
         <h1>Exemple de JSF into EJB into décale de JPA </h1>
-        
+
         <h:form>
             <h:dataTable value="#{manufacturerController.manufacturers}" var="items">
                 <h:column>
@@ -15,7 +16,10 @@
                 </h:column>
             </h:dataTable>
         </h:form>
-        
+
+        <br />
+        <h:link outcome="/services/List" value="Show All Services Items"/>
     </h:body>
+
 </html>
 
