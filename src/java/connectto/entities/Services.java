@@ -147,7 +147,7 @@ public class Services implements Serializable {
 
     @Override
     public String toString() {
-        return "connectto.Services[ idServices=" + idServices + " ]";
+        return name;
     }
     
 }
