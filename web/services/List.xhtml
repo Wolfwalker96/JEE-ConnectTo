@@ -17,9 +17,9 @@
                 <h:outputText escape="false" value="#{bundle.ListServicesEmpty}" rendered="#{servicesController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{servicesController.items.rowCount > 0}">
                     <h:outputText value="#{servicesController.pagination.pageFirstItem + 1}..#{servicesController.pagination.pageLastItem + 1}/#{servicesController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{servicesController.previous}" value="#{bundle.Previous} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{servicesController.next}" value="#{bundle.Next} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{servicesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:commandLink styleClass="w3-teal w3-circle" action="#{servicesController.previous}" value="#{bundle.Previous} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink styleClass="w3-teal w3-circle" action="#{servicesController.next}" value="#{bundle.Next} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{servicesController.items}" var="item" cellpadding="2" cellspacing="0" rowClasses="" rules="all">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListServicesTitle_name}"/>
@@ -42,11 +42,9 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{servicesController.prepareView}" value="#{bundle.ListServicesViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{servicesController.prepareEdit}" value="#{bundle.ListServicesEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{servicesController.destroy}" value="#{bundle.ListServicesDestroyLink}"/>
+                            <h:commandLink styleClass="w3-teal w3-button" action="#{servicesController.prepareView}" value="#{bundle.ListServicesViewLink}"/>
+                            <h:commandLink styleClass="w3-orange w3-button" action="#{servicesController.prepareEdit}" value="#{bundle.ListServicesEditLink}"/>
+                            <h:commandLink styleClass="w3-red w3-button" action="#{servicesController.destroy}" value="#{bundle.ListServicesDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
