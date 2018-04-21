@@ -9,6 +9,7 @@ import connectto.entities.Services;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  *
@@ -27,6 +28,14 @@ public class ServicesFacade extends AbstractFacade<Services> {
 
     public ServicesFacade() {
         super(Services.class);
+    }
+    
+    public List<Services> findServicesByCredential(String credential){
+        List<Services> results = em
+                .createNamedQuery("Services.findByCredential")
+                .setParameter("credential", credential)
+                .getResultList();
+        return results;
     }
     
 }
