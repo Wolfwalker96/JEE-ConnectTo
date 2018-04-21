@@ -19,36 +19,50 @@
                     <h:outputText value="#{conectionsController.pagination.pageFirstItem + 1}..#{conectionsController.pagination.pageLastItem + 1}/#{conectionsController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{conectionsController.previous}" value="#{bundle.Previous} #{conectionsController.pagination.pageSize}" rendered="#{conectionsController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{conectionsController.next}" value="#{bundle.Next} #{conectionsController.pagination.pageSize}" rendered="#{conectionsController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{conectionsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{conectionsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="" rules="all"> 
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListConectionsTitle_idActions}"/>
+                                <h:outputText value="#{bundle.ListConectionsTitle_Services}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idActions.name}"/>
+                            <h:outputText value="#{item.idSignals.getIdServicesSignals().getName()}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListConectionsTitle_idSignals}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idSignals.name}"/>
+                            <h:outputText value="#{item.idSignals.getName()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=""/>
+                            </f:facet>
+                            to
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConectionsTitle_Services}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idActions.getIdServicesActions().getName()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConectionsTitle_idActions}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idActions.getName()}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{conectionsController.prepareView}" value="#{bundle.ListConectionsViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{conectionsController.prepareEdit}" value="#{bundle.ListConectionsEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{conectionsController.destroy}" value="#{bundle.ListConectionsDestroyLink}"/>
+                            <h:commandLink styleClass="w3-button w3-teal" action="#{conectionsController.prepareView}" value="#{bundle.ListConectionsViewLink}"/>
+                            <h:commandLink styleClass="w3-button w3-orange" action="#{conectionsController.prepareEdit}" value="#{bundle.ListConectionsEditLink}"/>
+                            <h:commandLink styleClass="w3-button w3-red" action="#{conectionsController.destroy}" value="#{bundle.ListConectionsDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{conectionsController.prepareCreate}" value="#{bundle.ListConectionsCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListConectionsIndexLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{conectionsController.prepareCreate}" value="#{bundle.ListConectionsCreateLink}"/>
+                <br/>
             </h:form>
         </ui:define>
     </ui:composition>

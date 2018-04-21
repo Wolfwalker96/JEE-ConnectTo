@@ -16,23 +16,15 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewConectionsLabel_idActions}"/>
-                    <h:outputText value="#{conectionsController.selected.idActions.name}" title="#{bundle.ViewConectionsTitle_idActions}"/>
+                    <h:outputText value="#{conectionsController.selected.idActions.getFullName()}" title="#{bundle.ViewConectionsTitle_idActions}"/>
                     <h:outputText value="#{bundle.ViewConectionsLabel_idSignals}"/>
-                    <h:outputText value="#{conectionsController.selected.idSignals.name}" title="#{bundle.ViewConectionsTitle_idSignals}"/>
+                    <h:outputText value="#{conectionsController.selected.idSignals.getFullName()}" title="#{bundle.ViewConectionsTitle_idSignals}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{conectionsController.destroyAndView}" value="#{bundle.ViewConectionsDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewConectionsEditLink}"/>
-                <br />
-                <h:commandLink action="#{conectionsController.prepareCreate}" value="#{bundle.ViewConectionsCreateLink}" />
-                <br />
-                <h:commandLink action="#{conectionsController.prepareList}" value="#{bundle.ViewConectionsShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewConectionsIndexLink}"/>
-
+                <h:link styleClass="w3-button w3-orange" outcome="Edit" value="#{bundle.ViewConectionsEditLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{conectionsController.prepareCreate}" value="#{bundle.ViewConectionsCreateLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{conectionsController.prepareList}" value="#{bundle.ViewConectionsShowAllLink}"/>
+                <h:commandLink styleClass="w3-button w3-red" action="#{conectionsController.destroyAndView}" value="#{bundle.ViewConectionsDestroyLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

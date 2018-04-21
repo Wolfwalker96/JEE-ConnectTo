@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "signals")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Signals.findAll", query = "SELECT s FROM Signals s")
+    @NamedQuery(name = "Signals.findAll", query = "SELECT s.name FROM Signals s")
+    , @NamedQuery(name = "Signals.SignalAndService", query="SELECT CONCAT(s.name, s.idServicesSignals) FROM Signals s")
     , @NamedQuery(name = "Signals.findByIdSignals", query = "SELECT s FROM Signals s WHERE s.idSignals = :idSignals")
     , @NamedQuery(name = "Signals.findByName", query = "SELECT s FROM Signals s WHERE s.name = :name")})
 public class Signals implements Serializable {
@@ -74,6 +75,10 @@ public class Signals implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public String getFullName(){
+        return idServicesSignals.getName()+ " > "+ name;
+    }
 
     @XmlTransient
     public Collection<Conections> getConectionsCollection() {
@@ -114,7 +119,7 @@ public class Signals implements Serializable {
 
     @Override
     public String toString() {
-        return name;
+        return idServicesSignals.getName()+" > "+name;
     }
     
 }
