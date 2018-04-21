@@ -16,32 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_role`
+-- Table structure for table `roles`
 --
 
-DROP TABLE IF EXISTS `user_role`;
+DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL,
-  `rolename` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_roles_idx` (`rolename`),
-  KEY `fk_user_idx` (`username`),
-  CONSTRAINT `fk_roles` FOREIGN KEY (`rolename`) REFERENCES `roles` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user` FOREIGN KEY (`username`) REFERENCES `users` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `roles` (
+  `idRoles` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`idRoles`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data for table `roles`
 --
 
-LOCK TABLES `user_role` WRITE;
-/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (4,'service','Service'),(5,'user','Standard'),(6,'admin','Admin');
-/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'Admin'),(5,'Service'),(2,'Standard');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

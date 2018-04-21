@@ -3,11 +3,15 @@
 <glassfish-web-app error-url="">
   <security-role-mapping>
     <role-name>admin</role-name>
-    <group-name>ADMIN</group-name>
+    <group-name>Admin</group-name>
   </security-role-mapping>
   <security-role-mapping>
-    <role-name>user</role-name>
-    <group-name>USERS</group-name>
+    <role-name>service</role-name>
+    <group-name>Service</group-name>
+  </security-role-mapping>
+  <security-role-mapping>
+    <role-name>standard</role-name>
+    <group-name>Standard</group-name>
   </security-role-mapping>
   <class-loader delegate="true"/>
   <jsp-config>
