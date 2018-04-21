@@ -16,9 +16,9 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewConectionsLabel_idActions}"/>
-                    <h:outputText value="#{conectionsController.selected.idActions}" title="#{bundle.ViewConectionsTitle_idActions}"/>
+                    <h:outputText value="#{conectionsController.selected.idActions.name}" title="#{bundle.ViewConectionsTitle_idActions}"/>
                     <h:outputText value="#{bundle.ViewConectionsLabel_idSignals}"/>
-                    <h:outputText value="#{conectionsController.selected.idSignals}" title="#{bundle.ViewConectionsTitle_idSignals}"/>
+                    <h:outputText value="#{conectionsController.selected.idSignals.name}" title="#{bundle.ViewConectionsTitle_idSignals}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{conectionsController.destroyAndView}" value="#{bundle.ViewConectionsDestroyLink}"/>
