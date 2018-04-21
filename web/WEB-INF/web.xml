@@ -30,18 +30,6 @@
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
     <security-constraint>
-        <display-name>ConstraintUser</display-name>
-        <web-resource-collection>
-            <web-resource-name>user</web-resource-name>
-            <description/>
-            <url-pattern>/faces/User/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <description/>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <security-constraint>
         <display-name>ConstraintAdmin</display-name>
         <web-resource-collection>
             <web-resource-name>admin</web-resource-name>
@@ -51,6 +39,30 @@
         <auth-constraint>
             <description/>
             <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>ConstraintService</display-name>
+        <web-resource-collection>
+            <web-resource-name>service</web-resource-name>
+            <description/>
+            <url-pattern>/faces/Service/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>service</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>ConstraintStandard</display-name>
+        <web-resource-collection>
+            <web-resource-name>standard</web-resource-name>
+            <description/>
+            <url-pattern>/faces/Standard/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>standard</role-name>
         </auth-constraint>
     </security-constraint>
     <login-config>
@@ -63,10 +75,14 @@
     </login-config>
     <security-role>
         <description/>
-        <role-name>user</role-name>
+        <role-name>standard</role-name>
     </security-role>
     <security-role>
         <description/>
         <role-name>admin</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>service</role-name>
     </security-role>
 </web-app>

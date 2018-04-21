@@ -20,7 +20,7 @@
                     <h:outputText value="#{bundle.ViewActionsLabel_url}"/>
                     <h:outputText value="#{actionsController.selected.url}" title="#{bundle.ViewActionsTitle_url}"/>
                     <h:outputText value="#{bundle.ViewActionsLabel_idServicesActions}"/>
-                    <h:outputText value="#{actionsController.selected.idServicesActions}" title="#{bundle.ViewActionsTitle_idServicesActions}"/>
+                    <h:outputText value="#{actionsController.selected.idServicesActions.name}" title="#{bundle.ViewActionsTitle_idServicesActions}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{actionsController.destroyAndView}" value="#{bundle.ViewActionsDestroyLink}"/>

@@ -13,4 +13,44 @@
             <var>bundle</var>
         </resource-bundle>
     </application>
+   <navigation-rule> 
+        <from-view-id>/services/View.xhtml</from-view-id> 
+
+        <navigation-case> 
+           <from-action>#{actionsController.prepareCreate(servicesController.selected)}</from-action> 
+           <from-outcome>Create</from-outcome> 
+           <to-view-id>/actions/Create.xhtml</to-view-id> 
+        </navigation-case> 
+        
+        <navigation-case> 
+           <from-action>#{actionsController.prepareView(action.idActions)}</from-action> 
+           <from-outcome>View</from-outcome> 
+           <to-view-id>/actions/View.xhtml</to-view-id> 
+        </navigation-case> 
+        
+        <navigation-case> 
+           <from-action>#{actionsController.prepareEdit(action.idActions)}</from-action> 
+           <from-outcome>Edit</from-outcome> 
+           <to-view-id>/actions/Edit.xhtml</to-view-id> 
+        </navigation-case> 
+        
+        
+        <navigation-case> 
+           <from-action>#{signalsController.prepareView(signal.idSignals)}</from-action> 
+           <from-outcome>View</from-outcome> 
+           <to-view-id>/signals/View.xhtml</to-view-id> 
+        </navigation-case> 
+        
+        <navigation-case> 
+           <from-action>#{signalsController.prepareEdit(signal.idSignals)}</from-action> 
+           <from-outcome>Edit</from-outcome> 
+           <to-view-id>/signals/Edit.xhtml</to-view-id> 
+        </navigation-case> 
+        
+        <navigation-case> 
+           <from-action>#{signalsController.prepareCreate(servicesController.selected)}</from-action> 
+           <from-outcome>Create</from-outcome> 
+           <to-view-id>/signals/Create.xhtml</to-view-id> 
+        </navigation-case> 
+    </navigation-rule> 
 </faces-config>

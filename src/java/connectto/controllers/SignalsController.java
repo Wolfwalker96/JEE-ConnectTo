@@ -1,6 +1,7 @@
 package connectto.controllers;
 
 import connectto.entities.Signals;
+import connectto.entities.Services;
 import connectto.controllers.util.JsfUtil;
 import connectto.controllers.util.PaginationHelper;
 import connectto.facades.SignalsFacade;
@@ -72,9 +73,22 @@ public class SignalsController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
+    
+    public String prepareView(int id) {
+        current = getSignals(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "View";
+    }
 
     public String prepareCreate() {
         current = new Signals();
+        selectedItemIndex = -1;
+        return "Create";
+    }
+    
+    public String prepareCreate(Services service) {
+        current = new Signals();
+        current.setIdServicesSignals(service);
         selectedItemIndex = -1;
         return "Create";
     }
@@ -93,6 +107,12 @@ public class SignalsController implements Serializable {
     public String prepareEdit() {
         current = (Signals) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "Edit";
+    }
+    
+    public String prepareEdit(int id) {
+        current = getSignals(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
@@ -114,6 +134,15 @@ public class SignalsController implements Serializable {
         recreatePagination();
         recreateModel();
         return "List";
+    }
+    
+     public String destroy(int id) {
+        current = getSignals(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        performDestroy();
+        recreatePagination();
+        recreateModel();
+        return "View";
     }
 
     public String destroyAndView() {

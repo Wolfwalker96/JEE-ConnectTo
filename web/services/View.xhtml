@@ -25,25 +25,43 @@
                 <br />
                 <h:outputText value="#{bundle.ListSignalsTitle}"></h:outputText>
                 <h:outputText escape="false" value=" #{bundle.ListSignalsEmpty}" rendered="#{servicesController.selected.signalsCollection.size() == 0}"/>
-                <h:dataTable value="#{servicesController.selected.signalsCollection}" var="item" border="0" rendered="#{servicesController.selected.signalsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                <h:dataTable value="#{servicesController.selected.signalsCollection}" var="signal" border="0" rendered="#{servicesController.selected.signalsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListActionsTitle_name}"/>
+                                <h:outputText value="#{bundle.ListSignalsTitle_name}"/>
                             </f:facet>
-                            <h:outputText value="#{item.name}"/>
+                            <h:outputText value="#{signal.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink styleClass="w3-button w3-teal" action="#{signalsController.prepareView(signal.idSignals)}" value="#{bundle.ListSignalsViewLink}"/>
+                            <h:commandLink styleClass="w3-button w3-orange" action="#{signalsController.prepareEdit(signal.idSignals)}" value="#{bundle.ListSignalsEditLink}"/>
+                            <h:commandLink styleClass="w3-button w3-red" action="#{signalsController.destroy(signal.idSignals)}" value="#{bundle.ListSignalsDestroyLink}"/>
                         </h:column>
                 </h:dataTable>
+                <h:commandLink action="#{signalsController.prepareCreate(servicesController.selected)}" value="#{bundle.ListSignalsCreateLink}"/>
                 <br/>
                 <h:outputText value="#{bundle.ListActionsTitle}"></h:outputText>
                 <h:outputText escape="false" value=" #{bundle.ListActionsEmpty}" rendered="#{servicesController.selected.actionsCollection.size() == 0}"/>
-                <h:dataTable value="#{servicesController.selected.actionsCollection}" var="item" border="0" rendered="#{servicesController.selected.actionsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                <h:dataTable value="#{servicesController.selected.actionsCollection}" var="action" border="0" rendered="#{servicesController.selected.actionsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListActionsTitle_name}"/>
                             </f:facet>
-                            <h:outputText value="#{item.name}"/>
+                            <h:outputText value="#{action.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink styleClass="w3-button w3-teal" action="#{actionsController.prepareView(action.idActions)}" value="#{bundle.ListSignalsViewLink}"/>
+                            <h:commandLink styleClass="w3-button w3-orange" action="#{actionsController.prepareEdit(action.idActions)}" value="#{bundle.ListSignalsEditLink}"/>
+                            <h:commandLink styleClass="w3-button w3-red" action="#{actionsController.destroy(action.idActions)}" value="#{bundle.ListSignalsDestroyLink}"/>
                         </h:column>
                 </h:dataTable>
+                <h:commandLink action="#{actionsController.prepareCreate(servicesController.selected)}" value="#{bundle.ListActionsCreateLink}"/>
                 <br/>
                 <h:commandLink action="#{servicesController.destroyAndView}" value="#{bundle.ViewServicesDestroyLink}"/>
                 <br />
