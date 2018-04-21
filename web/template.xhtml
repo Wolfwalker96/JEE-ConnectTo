@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <title>ConnectTo | <ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="connectto.css" />
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
     </h:head>
     
@@ -16,7 +17,7 @@
                     <h:link styleClass="w3-bar-item w3-button" outcome="/index" value="Home"/>
                     <h:link styleClass="w3-bar-item w3-button" outcome="/services/List" value="Services"/>
                     <h:link styleClass="w3-bar-item w3-button" outcome="/actions/List" value="Actions"/>
-                    <h:link styleClass="w3-bar-item w3-button" outcome="/conections/List" value="Conections"/>
+                    <h:link styleClass="w3-bar-item w3-button" outcome="/conections/List" value="Connections"/>
                     <h:link styleClass="w3-bar-item w3-button" outcome="/signals/List" value="Signals"/>
                 </div>
 	    </header>

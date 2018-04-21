@@ -25,13 +25,8 @@
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{conectionsController.create}" value="#{bundle.CreateConectionsSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{conectionsController.prepareList}" value="#{bundle.CreateConectionsShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateConectionsIndexLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{conectionsController.create}" value="#{bundle.CreateConectionsSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-light-green" action="#{conectionsController.prepareList}" value="#{bundle.CreateConectionsShowAllLink}" immediate="true"/>
             </h:form>
         </ui:define>
     </ui:composition>

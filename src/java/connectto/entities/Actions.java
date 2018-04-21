@@ -83,6 +83,10 @@ public class Actions implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public String getFullName(){
+        return idServicesActions.getName()+ " > "+ name;
+    }
 
     public String getUrl() {
         return url;
@@ -122,7 +126,7 @@ public class Actions implements Serializable {
 
     @Override
     public String toString() {
-        return name;
+        return idServicesActions.getName()+" > "+name;
     }
     
 }

@@ -24,15 +24,9 @@
                         <f:selectItems value="#{signalsController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{conectionsController.update}" value="#{bundle.EditConectionsSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditConectionsViewLink}"/>
-                <br />
-                <h:commandLink action="#{conectionsController.prepareList}" value="#{bundle.EditConectionsShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditConectionsIndexLink}" />
+                <h:commandLink styleClass="w3-button w3-green" action="#{conectionsController.update}" value="#{bundle.EditConectionsSaveLink}"/>
+                <h:commandLink styleClass="w3-button w3-light-green" action="#{conectionsController.prepareList}" value="#{bundle.EditConectionsShowAllLink}" immediate="true"/>
+                <h:link styleClass="w3-button w3-light-green" outcome="View" value="#{bundle.EditConectionsViewLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
