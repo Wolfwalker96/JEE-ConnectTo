@@ -13,4 +13,19 @@
             <var>bundle</var>
         </resource-bundle>
     </application>
+   <navigation-rule> 
+        <from-view-id>services/View.xhtml</from-view-id> 
+
+        <navigation-case> 
+           <from-action>#{actionsController.prepareCreate(servicesController.selected)}</from-action> 
+           <from-outcome>Create</from-outcome> 
+           <to-view-id>actions/Create.xhtml</to-view-id> 
+        </navigation-case> 
+        
+        <navigation-case> 
+           <from-action>#{signalsController.prepareCreate(servicesController.selected)}</from-action> 
+           <from-outcome>Create</from-outcome> 
+           <to-view-id>signals/Create.xhtml</to-view-id> 
+        </navigation-case> 
+    </navigation-rule> 
 </faces-config>

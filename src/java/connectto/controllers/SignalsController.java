@@ -1,6 +1,7 @@
 package connectto.controllers;
 
 import connectto.entities.Signals;
+import connectto.entities.Services;
 import connectto.controllers.util.JsfUtil;
 import connectto.controllers.util.PaginationHelper;
 import connectto.facades.SignalsFacade;
@@ -75,6 +76,13 @@ public class SignalsController implements Serializable {
 
     public String prepareCreate() {
         current = new Signals();
+        selectedItemIndex = -1;
+        return "Create";
+    }
+    
+    public String prepareCreate(Services service) {
+        current = new Signals();
+        current.setIdServicesSignals(service);
         selectedItemIndex = -1;
         return "Create";
     }

@@ -1,6 +1,7 @@
 package connectto.controllers;
 
 import connectto.entities.Actions;
+import connectto.entities.Services;
 import connectto.controllers.util.JsfUtil;
 import connectto.controllers.util.PaginationHelper;
 import connectto.facades.ActionsFacade;
@@ -75,6 +76,13 @@ public class ActionsController implements Serializable {
 
     public String prepareCreate() {
         current = new Actions();
+        selectedItemIndex = -1;
+        return "Create";
+    }
+    
+    public String prepareCreate(Services service) {
+        current = new Actions();
+        current.setIdServicesActions(service);
         selectedItemIndex = -1;
         return "Create";
     }
