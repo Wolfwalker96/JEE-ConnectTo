@@ -1,22 +1,39 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title><ui:insert name="title">Default Title</ui:insert></title>
-        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
     </h:head>
-
+    
     <h:body>
-        <h1>
-            <ui:insert name="title">Default Title</ui:insert>
-        </h1>
-        <p>
-            <ui:insert name="body">Default Body</ui:insert>
-        </p>
-    </h:body>
 
+	<div id="page">		
+	    <header>
+                <div class="w3-bar w3-black">
+                    <h:link styleClass="w3-bar-item w3-button" outcome="/index" value="Home"/>
+                    <h:link styleClass="w3-bar-item w3-button" outcome="/services/List" value="Services"/>
+                    <h:link styleClass="w3-bar-item w3-button" outcome="/actions/List" value="Actions"/>
+                    <h:link styleClass="w3-bar-item w3-button" outcome="/conections/List" value="Conections"/>
+                    <h:link styleClass="w3-bar-item w3-button" outcome="/services/List" value="Services"/>
+                    <h:link styleClass="w3-bar-item w3-button" outcome="/signals/List" value="Signals"/>
+                </div>
+	    </header>
+	    
+	    <div class="w3-container">
+                <h1>
+                    <ui:insert name="title">Default Title</ui:insert>
+                </h1>
+                <ui:insert name="body">Default Body</ui:insert>
+	    </div>
+		    
+	    <footer class="w3-black w3-center w3-container">
+                <p>HE-Arc</p>
+    	    </footer>
+
+        </div>
+
+    </h:body>
 </html>

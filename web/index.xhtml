@@ -1,37 +1,18 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-    </h:head>
-    <h:body>
-        <h1>Exemple de JSF into EJB into décale de JPA </h1>
 
-        <h:form>
-            <h:dataTable value="#{manufacturerController.manufacturers}" var="items">
-                <h:column>
-                    <h:outputText value="#{items.name}"/>
-                </h:column>
-            </h:dataTable>
-        </h:form>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="ConnectTo"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
 
-        <br />
-        <h:link outcome="/services/List" value="Show All Services Items"/>
-        <br />
-        <h:link outcome="/actions/List" value="Show All Actions Items"/>
-        <br />
-        <h:link outcome="/conections/List" value="Show All Conections Items"/>
-        <br />
-        <h:link outcome="/services/List" value="Show All Services Items"/>
-        <br />
-        <h:link outcome="/signals/List" value="Show All Signals Items"/>
-    </h:body>
-
-
-
-
+        </ui:define>
+    </ui:composition>
 
 </html>
+
 

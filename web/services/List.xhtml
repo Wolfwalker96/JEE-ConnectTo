@@ -22,12 +22,6 @@
                     <h:dataTable value="#{servicesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListServicesTitle_idServices}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idServices}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListServicesTitle_name}"/>
                             </f:facet>
                             <h:outputText value="#{item.name}"/>
