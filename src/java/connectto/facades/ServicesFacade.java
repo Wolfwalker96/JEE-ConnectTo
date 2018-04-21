@@ -30,12 +30,4 @@ public class ServicesFacade extends AbstractFacade<Services> {
         super(Services.class);
     }
     
-    public List<Services> findServicesByCredential(String credential){
-        List<Services> results = em
-                .createNamedQuery("Services.findByCredential")
-                .setParameter("credential", credential)
-                .getResultList();
-        return results;
-    }
-    
 }

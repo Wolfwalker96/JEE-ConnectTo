@@ -18,11 +18,21 @@ import connectto.entities.Actions;
 import connectto.entities.Signals;
 import connectto.entities.Conections;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.DataOutputStream;
 import java.util.List;
 import java.util.Collection;
+import java.util.Map;
+import javax.persistence.Cache;
+import javax.persistence.EntityGraph;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnitUtil;
+import javax.persistence.Query;
+import javax.persistence.SynchronizationType;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.metamodel.Metamodel;
 
 /**
  *
@@ -30,6 +40,9 @@ import java.util.Collection;
  */
 @WebServlet(name = "receive", urlPatterns = {"/receive"})
 public class emiter extends HttpServlet {
+    
+    @PersistenceContext(unitName = "ConnectToPU")
+    EntityManagerFactory emFactory;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,14 +57,18 @@ public class emiter extends HttpServlet {
             throws ServletException, IOException {
             String credential = request.getParameter("credential");
             String signal_name = request.getParameter("signal");
-            ServicesFacade ServicesFacade = new ServicesFacade();
-            List<Services> services = ServicesFacade.findServicesByCredential(credential);
+            EntityManager em = emFactory.createEntityManager();
+            List<Services> services = em
+                    .createNamedQuery("Services.findByCredential")
+                    .setParameter(":credential", credential)
+                    .getResultList();
             
             if(services.size()<0){
                 Collection<Signals> signals = services.get(0).getSignalsCollection();
                 for(Signals signal : signals){
                     if(signal.getName().equals(signal_name)){
                         for(Conections connection : signal.getConectionsCollection()){
+                            System.out.println(connection.getIdSignals().getFullName()+" -> "+connection.getIdActions().getFullName());
                             String url_to_call = connection.getIdActions().getUrl();
                             URL url = new URL(url_to_call);
                             HttpURLConnection http = (HttpURLConnection) url.openConnection();
