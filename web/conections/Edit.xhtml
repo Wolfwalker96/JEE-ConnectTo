@@ -15,8 +15,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditConectionsLabel_idConnections}" for="idConnections" />
-                    <h:inputText id="idConnections" value="#{conectionsController.selected.idConnections}" title="#{bundle.EditConectionsTitle_idConnections}" required="true" requiredMessage="#{bundle.EditConectionsRequiredMessage_idConnections}"/>
                     <h:outputLabel value="#{bundle.EditConectionsLabel_idActions}" for="idActions" />
                     <h:selectOneMenu id="idActions" value="#{conectionsController.selected.idActions}" title="#{bundle.EditConectionsTitle_idActions}" required="true" requiredMessage="#{bundle.EditConectionsRequiredMessage_idActions}">
                         <f:selectItems value="#{actionsController.itemsAvailableSelectOne}"/>
