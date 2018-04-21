@@ -23,6 +23,28 @@
                     <h:outputText value="#{servicesController.selected.credential}" title="#{bundle.ViewServicesTitle_credential}"/>
                 </h:panelGrid>
                 <br />
+                <h:outputText value="#{bundle.ListSignalsTitle}"></h:outputText>
+                <h:outputText escape="false" value=" #{bundle.ListSignalsEmpty}" rendered="#{servicesController.selected.signalsCollection.size() == 0}"/>
+                <h:dataTable value="#{servicesController.selected.signalsCollection}" var="item" border="0" rendered="#{servicesController.selected.signalsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActionsTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                </h:dataTable>
+                <br/>
+                <h:outputText value="#{bundle.ListActionsTitle}"></h:outputText>
+                <h:outputText escape="false" value=" #{bundle.ListActionsEmpty}" rendered="#{servicesController.selected.actionsCollection.size() == 0}"/>
+                <h:dataTable value="#{servicesController.selected.actionsCollection}" var="item" border="0" rendered="#{servicesController.selected.actionsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActionsTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                </h:dataTable>
+                <br/>
                 <h:commandLink action="#{servicesController.destroyAndView}" value="#{bundle.ViewServicesDestroyLink}"/>
                 <br />
                 <br />

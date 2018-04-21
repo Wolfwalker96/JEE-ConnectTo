@@ -122,7 +122,7 @@ public class Actions implements Serializable {
 
     @Override
     public String toString() {
-        return "connectto.entities.Actions[ idActions=" + idActions + " ]";
+        return name;
     }
     
 }

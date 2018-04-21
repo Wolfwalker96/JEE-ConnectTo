@@ -114,7 +114,7 @@ public class Signals implements Serializable {
 
     @Override
     public String toString() {
-        return "connectto.Signals[ idSignals=" + idSignals + " ]";
+        return name;
     }
     
 }
