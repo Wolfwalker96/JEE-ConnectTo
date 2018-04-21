@@ -6,9 +6,7 @@
 package connectto.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,16 +16,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author dylan.santosde
+ * @author cedric.pahud
  */
 @Entity
 @Table(name = "actions")
@@ -55,11 +51,9 @@ public class Actions implements Serializable {
     @Size(min = 1, max = 500)
     @Column(name = "url")
     private String url;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActions")
-    private Collection<Conections> conectionsCollection;
-    @JoinColumn(name = "idServices", referencedColumnName = "idServices")
+    @JoinColumn(name = "idServicesActions", referencedColumnName = "idServices")
     @ManyToOne(optional = false)
-    private Services idServices;
+    private Services idServicesActions;
 
     public Actions() {
     }
@@ -98,21 +92,12 @@ public class Actions implements Serializable {
         this.url = url;
     }
 
-    @XmlTransient
-    public Collection<Conections> getConectionsCollection() {
-        return conectionsCollection;
+    public Services getIdServicesActions() {
+        return idServicesActions;
     }
 
-    public void setConectionsCollection(Collection<Conections> conectionsCollection) {
-        this.conectionsCollection = conectionsCollection;
-    }
-
-    public Services getIdServices() {
-        return idServices;
-    }
-
-    public void setIdServices(Services idServices) {
-        this.idServices = idServices;
+    public void setIdServicesActions(Services idServicesActions) {
+        this.idServicesActions = idServicesActions;
     }
 
     @Override
@@ -137,7 +122,7 @@ public class Actions implements Serializable {
 
     @Override
     public String toString() {
-        return "connectto.Actions[ idActions=" + idActions + " ]";
+        return "connectto.entities.Actions[ idActions=" + idActions + " ]";
     }
     
 }

@@ -230,3 +230,5 @@ pip-log.txt
 .mr.developer.cfg
 nbproject/private/private.properties
 *.properties
+
+web/WEB-INF/glassfish-resources.xml

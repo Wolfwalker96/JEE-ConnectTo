@@ -59,7 +59,7 @@ public class Services implements Serializable {
     private String credential;
     @OneToMany(mappedBy = "idServicesSignals")
     private Collection<Signals> signalsCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idServices")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idServicesActions")
     private Collection<Actions> actionsCollection;
 
     public Services() {
