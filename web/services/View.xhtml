@@ -5,10 +5,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template/common/commonLayout.xhtml">
-        <!--<ui:define name="title">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
             <h:outputText value="#{bundle.ViewServicesTitle}"></h:outputText>
-        </ui:define>-->
+        </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>

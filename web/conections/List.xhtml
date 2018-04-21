@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConectionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConectionsEmpty}" rendered="#{conectionsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{conectionsController.items.rowCount > 0}">
+                    <h:outputText value="#{conectionsController.pagination.pageFirstItem + 1}..#{conectionsController.pagination.pageLastItem + 1}/#{conectionsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{conectionsController.previous}" value="#{bundle.Previous} #{conectionsController.pagination.pageSize}" rendered="#{conectionsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{conectionsController.next}" value="#{bundle.Next} #{conectionsController.pagination.pageSize}" rendered="#{conectionsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{conectionsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConectionsTitle_idConnections}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConnections}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConectionsTitle_idActions}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idActions}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConectionsTitle_idSignals}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSignals}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{conectionsController.prepareView}" value="#{bundle.ListConectionsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{conectionsController.prepareEdit}" value="#{bundle.ListConectionsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{conectionsController.destroy}" value="#{bundle.ListConectionsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{conectionsController.prepareCreate}" value="#{bundle.ListConectionsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListConectionsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

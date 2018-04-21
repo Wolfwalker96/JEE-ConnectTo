@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewActionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewActionsLabel_idActions}"/>
+                    <h:outputText value="#{actionsController.selected.idActions}" title="#{bundle.ViewActionsTitle_idActions}"/>
+                    <h:outputText value="#{bundle.ViewActionsLabel_name}"/>
+                    <h:outputText value="#{actionsController.selected.name}" title="#{bundle.ViewActionsTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewActionsLabel_url}"/>
+                    <h:outputText value="#{actionsController.selected.url}" title="#{bundle.ViewActionsTitle_url}"/>
+                    <h:outputText value="#{bundle.ViewActionsLabel_idServicesActions}"/>
+                    <h:outputText value="#{actionsController.selected.idServicesActions}" title="#{bundle.ViewActionsTitle_idServicesActions}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{actionsController.destroyAndView}" value="#{bundle.ViewActionsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewActionsEditLink}"/>
+                <br />
+                <h:commandLink action="#{actionsController.prepareCreate}" value="#{bundle.ViewActionsCreateLink}" />
+                <br />
+                <h:commandLink action="#{actionsController.prepareList}" value="#{bundle.ViewActionsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewActionsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

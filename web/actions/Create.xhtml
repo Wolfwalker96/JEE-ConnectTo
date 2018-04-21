@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateActionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateActionsLabel_idActions}" for="idActions" />
+                    <h:inputText id="idActions" value="#{actionsController.selected.idActions}" title="#{bundle.CreateActionsTitle_idActions}" required="true" requiredMessage="#{bundle.CreateActionsRequiredMessage_idActions}"/>
+                    <h:outputLabel value="#{bundle.CreateActionsLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{actionsController.selected.name}" title="#{bundle.CreateActionsTitle_name}" required="true" requiredMessage="#{bundle.CreateActionsRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreateActionsLabel_url}" for="url" />
+                    <h:inputText id="url" value="#{actionsController.selected.url}" title="#{bundle.CreateActionsTitle_url}" required="true" requiredMessage="#{bundle.CreateActionsRequiredMessage_url}"/>
+                    <h:outputLabel value="#{bundle.CreateActionsLabel_idServicesActions}" for="idServicesActions" />
+                    <h:selectOneMenu id="idServicesActions" value="#{actionsController.selected.idServicesActions}" title="#{bundle.CreateActionsTitle_idServicesActions}" required="true" requiredMessage="#{bundle.CreateActionsRequiredMessage_idServicesActions}">
+                        <f:selectItems value="#{servicesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{actionsController.create}" value="#{bundle.CreateActionsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{actionsController.prepareList}" value="#{bundle.CreateActionsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateActionsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
