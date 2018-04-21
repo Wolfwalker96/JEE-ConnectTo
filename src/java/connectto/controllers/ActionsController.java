@@ -73,6 +73,12 @@ public class ActionsController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
+    
+    public String prepareView(int id) {
+        current = getActions(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "View";
+    }
 
     public String prepareCreate() {
         current = new Actions();
@@ -103,6 +109,12 @@ public class ActionsController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
+    
+    public String prepareEdit(int id) {
+        current = getActions(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "Edit";
+    }
 
     public String update() {
         try {
@@ -122,6 +134,15 @@ public class ActionsController implements Serializable {
         recreatePagination();
         recreateModel();
         return "List";
+    }
+    
+    public String destroy(int id) {
+        current = getActions(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        performDestroy();
+        recreatePagination();
+        recreateModel();
+        return "View";
     }
 
     public String destroyAndView() {

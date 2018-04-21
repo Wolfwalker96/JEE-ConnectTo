@@ -73,6 +73,12 @@ public class SignalsController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
+    
+    public String prepareView(int id) {
+        current = getSignals(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "View";
+    }
 
     public String prepareCreate() {
         current = new Signals();
@@ -103,6 +109,12 @@ public class SignalsController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
+    
+    public String prepareEdit(int id) {
+        current = getSignals(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "Edit";
+    }
 
     public String update() {
         try {
@@ -122,6 +134,15 @@ public class SignalsController implements Serializable {
         recreatePagination();
         recreateModel();
         return "List";
+    }
+    
+     public String destroy(int id) {
+        current = getSignals(id);
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        performDestroy();
+        recreatePagination();
+        recreateModel();
+        return "View";
     }
 
     public String destroyAndView() {
