@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+    </h:head>
+    
+    <h:body>
+
+	<div id="page">		
+	    <header>
+		<ui:insert name="header" >
+		  <ui:include src="/template/common/commonHeader.xhtml" />
+		</ui:insert>
+	    </header>
+	    
+	    <div class="w3-container">
+	  	<ui:insert name="content" >
+	 	  <ui:include src="/template/common/commonContent.xhtml" />
+	   	</ui:insert>
+	    </div>
+		    
+	    <footer class="w3-black w3-center w3-container">
+	    	<ui:insert name="footer" >
+	    	  <ui:include src="/template/common/commonFooter.xhtml" />
+	    	</ui:insert>
+    	    </footer>
+
+        </div>
+
+    </h:body>
+</html>
+
