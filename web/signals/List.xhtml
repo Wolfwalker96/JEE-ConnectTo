@@ -19,7 +19,7 @@
                     <h:outputText value="#{signalsController.pagination.pageFirstItem + 1}..#{signalsController.pagination.pageLastItem + 1}/#{signalsController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{signalsController.previous}" value="#{bundle.Previous} #{signalsController.pagination.pageSize}" rendered="#{signalsController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{signalsController.next}" value="#{bundle.Next} #{signalsController.pagination.pageSize}" rendered="#{signalsController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{signalsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{signalsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSignalsTitle_name}"/>
@@ -36,19 +36,16 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{signalsController.prepareView}" value="#{bundle.ListSignalsViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{signalsController.prepareEdit}" value="#{bundle.ListSignalsEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{signalsController.destroy}" value="#{bundle.ListSignalsDestroyLink}"/>
+                            <h:commandLink styleClass="w3-button w3-teal" action="#{signalsController.prepareView}" value="#{bundle.ListSignalsViewLink}"/>
+                            <h:commandLink styleClass="w3-button w3-orange" action="#{signalsController.prepareEdit}" value="#{bundle.ListSignalsEditLink}"/>
+                            <h:commandLink styleClass="w3-button w3-red" action="#{signalsController.destroy}" value="#{bundle.ListSignalsDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{signalsController.prepareCreate}" value="#{bundle.ListSignalsCreateLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{signalsController.prepareCreate}" value="#{bundle.ListSignalsCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListSignalsIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

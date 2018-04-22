@@ -21,18 +21,12 @@
                     <h:outputText value="#{signalsController.selected.idServicesSignals.name}" title="#{bundle.ViewSignalsTitle_idServicesSignals}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{signalsController.destroyAndView}" value="#{bundle.ViewSignalsDestroyLink}"/>
+                <h:commandLink styleClass="w3-button w3-red" action="#{signalsController.destroyAndView}" value="#{bundle.ViewSignalsDestroyLink}"/>
+                <h:link styleClass="w3-button w3-orange" outcome="Edit" value="#{bundle.ViewSignalsEditLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{signalsController.prepareCreate}" value="#{bundle.ViewSignalsCreateLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{signalsController.prepareList}" value="#{bundle.ViewSignalsShowAllLink}"/>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundle.ViewSignalsEditLink}"/>
-                <br />
-                <h:commandLink action="#{signalsController.prepareCreate}" value="#{bundle.ViewSignalsCreateLink}" />
-                <br />
-                <h:commandLink action="#{signalsController.prepareList}" value="#{bundle.ViewSignalsShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewSignalsIndexLink}"/>
-
             </h:form>
         </ui:define>
     </ui:composition>

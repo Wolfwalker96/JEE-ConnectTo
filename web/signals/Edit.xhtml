@@ -22,15 +22,12 @@
                         <f:selectItems value="#{servicesController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{signalsController.update}" value="#{bundle.EditSignalsSaveLink}"/>
+                <br />
+                <h:commandLink styleClass="w3-button w3-green" action="#{signalsController.update}" value="#{bundle.EditSignalsSaveLink}"/>
+                <h:link styleClass="w3-button w3-teal" outcome="View" value="#{bundle.EditSignalsViewLink}"/>
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{signalsController.prepareList}" value="#{bundle.EditSignalsShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditSignalsViewLink}"/>
-                <br />
-                <h:commandLink action="#{signalsController.prepareList}" value="#{bundle.EditSignalsShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditSignalsIndexLink}" />
             </h:form>
         </ui:define>
     </ui:composition>
