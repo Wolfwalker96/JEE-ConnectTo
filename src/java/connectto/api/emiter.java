@@ -61,13 +61,21 @@ public class emiter extends HttpServlet {
                 Collection<Signals> signals = services.get(0).getSignalsCollection();
                 for(Signals signal : signals){
                     if(signal.getName().equals(signal_name)){
-                        for(Conections connection : signal.getConectionsCollection()){
-                            System.out.println(connection.getIdSignals().getFullName()+" -> "+connection.getIdActions().getFullName());
-                            String url_to_call = connection.getIdActions().getUrl();
-                            URL url = new URL(url_to_call);
-                            InputStream is = url.openStream();
-                            is.close();
-                        }
+                        signal.getConectionsCollection().stream().parallel().forEach( connection -> {
+                            System.out.println("Event TX : "+connection.getIdSignals().getFullName()+" to "+connection.getIdActions().getFullName());
+                            String status;
+                            try{
+                                String url_to_call = connection.getIdActions().getUrl();
+                                URL url = new URL(url_to_call);
+                                InputStream is = url.openStream();
+                                is.close();
+                                status="Succes";
+                            }
+                            catch(Exception e){
+                                status="Failed with Error";
+                            }
+                            System.out.println(connection.getIdSignals().getFullName()+" -> "+connection.getIdActions().getFullName()+" ("+status+")");
+                        });
                     }
                 }
             }
