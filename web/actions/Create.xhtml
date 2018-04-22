@@ -25,13 +25,10 @@
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{actionsController.create}" value="#{bundle.CreateActionsSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-green" action="#{actionsController.create}" value="#{bundle.CreateActionsSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{actionsController.prepareList}" value="#{bundle.CreateActionsShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink action="#{actionsController.prepareList}" value="#{bundle.CreateActionsShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateActionsIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

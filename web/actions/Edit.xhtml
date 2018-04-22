@@ -24,15 +24,12 @@
                         <f:selectItems value="#{servicesController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{actionsController.update}" value="#{bundle.EditActionsSaveLink}"/>
+                <br />
+                <h:commandLink styleClass="w3-button w3-green" action="#{actionsController.update}" value="#{bundle.EditActionsSaveLink}"/>
+                <h:link styleClass="w3-button w3-teal" outcome="View" value="#{bundle.EditActionsViewLink}"/>
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{actionsController.prepareList}" value="#{bundle.EditActionsShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditActionsViewLink}"/>
-                <br />
-                <h:commandLink action="#{actionsController.prepareList}" value="#{bundle.EditActionsShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditActionsIndexLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

@@ -19,7 +19,13 @@
                     <h:outputText value="#{actionsController.pagination.pageFirstItem + 1}..#{actionsController.pagination.pageLastItem + 1}/#{actionsController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{actionsController.previous}" value="#{bundle.Previous} #{actionsController.pagination.pageSize}" rendered="#{actionsController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{actionsController.next}" value="#{bundle.Next} #{actionsController.pagination.pageSize}" rendered="#{actionsController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{actionsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{actionsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActionsTitle_idServicesActions}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idServicesActions.name}"/>
+                        </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListActionsTitle_name}"/>
@@ -34,27 +40,18 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListActionsTitle_idServicesActions}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idServicesActions.name}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{actionsController.prepareView}" value="#{bundle.ListActionsViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{actionsController.prepareEdit}" value="#{bundle.ListActionsEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{actionsController.destroy}" value="#{bundle.ListActionsDestroyLink}"/>
+                            <h:commandLink styleClass="w3-button w3-teal" action="#{actionsController.prepareView}" value="#{bundle.ListActionsViewLink}"/>
+                            <h:commandLink styleClass="w3-button w3-orange" action="#{actionsController.prepareEdit}" value="#{bundle.ListActionsEditLink}"/>
+                            <h:commandLink styleClass="w3-button w3-red" action="#{actionsController.destroy}" value="#{bundle.ListActionsDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{actionsController.prepareCreate}" value="#{bundle.ListActionsCreateLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{actionsController.prepareCreate}" value="#{bundle.ListActionsCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListActionsIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

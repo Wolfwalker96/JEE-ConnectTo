@@ -23,18 +23,12 @@
                     <h:outputText value="#{actionsController.selected.idServicesActions.name}" title="#{bundle.ViewActionsTitle_idServicesActions}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{actionsController.destroyAndView}" value="#{bundle.ViewActionsDestroyLink}"/>
+                <h:commandLink styleClass="w3-button w3-red" action="#{actionsController.destroyAndView}" value="#{bundle.ViewActionsDestroyLink}"/>
+                <h:link styleClass="w3-button w3-orange" outcome="Edit" value="#{bundle.ViewActionsEditLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{actionsController.prepareCreate}" value="#{bundle.ViewActionsCreateLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{actionsController.prepareList}" value="#{bundle.ViewActionsShowAllLink}"/>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundle.ViewActionsEditLink}"/>
-                <br />
-                <h:commandLink action="#{actionsController.prepareCreate}" value="#{bundle.ViewActionsCreateLink}" />
-                <br />
-                <h:commandLink action="#{actionsController.prepareList}" value="#{bundle.ViewActionsShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewActionsIndexLink}"/>
-
             </h:form>
         </ui:define>
     </ui:composition>
