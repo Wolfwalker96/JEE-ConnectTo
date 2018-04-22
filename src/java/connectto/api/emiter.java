@@ -6,7 +6,7 @@
 package connectto.api;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,23 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import java.net.HttpURLConnection;
+import javax.persistence.PersistenceUnit;
 import java.net.URL;
-import java.io.DataOutputStream;
 import java.util.List;
 import java.util.Collection;
-import javax.annotation.Resource;
-import javax.persistence.PersistenceUnit;
-import javax.transaction.UserTransaction;
+
 import connectto.entities.Services;
 import connectto.entities.Signals;
 import connectto.entities.Conections;
-import java.io.InputStream;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 
 /**
  *
