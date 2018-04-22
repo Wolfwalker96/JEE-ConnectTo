@@ -6,7 +6,12 @@ import connectto.controllers.util.PaginationHelper;
 import connectto.facades.UsersFacade;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -79,8 +84,39 @@ public class UsersController implements Serializable {
         return "Create";
     }
 
+    
+     private String byteToHex(byte[] bits) {
+        if (bits == null) {
+            return null;
+        }
+        StringBuilder hex = new StringBuilder(bits.length * 2); // encod(1_bit) => 2 digits
+        for (int i = 0; i < bits.length; i++) {
+            if (((int) bits[i] & 0xff) < 0x10) { // 0 < .. < 9
+                hex.append("0");
+            }
+            hex.append(Integer.toString((int) bits[i] & 0xff, 16)); // [(bit+256)%256]^16
+        }
+        return hex.toString();
+    }
+    
+    private String hashPass(String pass) {
+	String hash = "";
+	MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            hash = byteToHex(md.digest(pass.getBytes("UTF-8")));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+	return hash;
+    }
     public String create() {
         try {
+            current.setPassword(hashPass(current.getPassword()));
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsersCreated"));
             return prepareCreate();
