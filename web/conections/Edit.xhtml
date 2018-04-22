@@ -24,9 +24,12 @@
                         <f:selectItems value="#{signalsController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
+                <br/>
                 <h:commandLink styleClass="w3-button w3-green" action="#{conectionsController.update}" value="#{bundle.EditConectionsSaveLink}"/>
-                <h:commandLink styleClass="w3-button w3-light-green" action="#{conectionsController.prepareList}" value="#{bundle.EditConectionsShowAllLink}" immediate="true"/>
-                <h:link styleClass="w3-button w3-light-green" outcome="View" value="#{bundle.EditConectionsViewLink}"/>
+                <h:link styleClass="w3-button w3-teal" outcome="View" value="#{bundle.EditConectionsViewLink}"/>
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{conectionsController.prepareList}" value="#{bundle.EditConectionsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
             </h:form>
         </ui:define>
     </ui:composition>
