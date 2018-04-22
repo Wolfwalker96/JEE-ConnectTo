@@ -15,22 +15,14 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditUsersLabel_idUsers}" for="idUsers" />
-                    <h:inputText id="idUsers" value="#{usersController.selected.idUsers}" title="#{bundle.EditUsersTitle_idUsers}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_idUsers}"/>
                     <h:outputLabel value="#{bundle.EditUsersLabel_name}" for="name" />
                     <h:inputText id="name" value="#{usersController.selected.name}" title="#{bundle.EditUsersTitle_name}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_name}"/>
                     <h:outputLabel value="#{bundle.EditUsersLabel_password}" for="password" />
                     <h:inputText id="password" value="#{usersController.selected.password}" title="#{bundle.EditUsersTitle_password}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_password}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{usersController.update}" value="#{bundle.EditUsersSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditUsersViewLink}"/>
-                <br />
-                <h:commandLink action="#{usersController.prepareList}" value="#{bundle.EditUsersShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditUsersIndexLink}" />
+                <h:commandLink styleClass="w3-button w3-green" action="#{usersController.update}" value="#{bundle.EditUsersSaveLink}"/>
+                <h:link styleClass="w3-button w3-teal" outcome="View" value="#{bundle.EditUsersViewLink}"/>
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{usersController.prepareList}" value="#{bundle.EditUsersShowAllLink}" immediate="true"/>
             </h:form>
         </ui:define>
     </ui:composition>

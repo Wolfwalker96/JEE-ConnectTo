@@ -15,25 +15,16 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewUsersLabel_idUsers}"/>
-                    <h:outputText value="#{usersController.selected.idUsers}" title="#{bundle.ViewUsersTitle_idUsers}"/>
                     <h:outputText value="#{bundle.ViewUsersLabel_name}"/>
                     <h:outputText value="#{usersController.selected.name}" title="#{bundle.ViewUsersTitle_name}"/>
                     <h:outputText value="#{bundle.ViewUsersLabel_password}"/>
                     <h:outputText value="#{usersController.selected.password}" title="#{bundle.ViewUsersTitle_password}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{usersController.destroyAndView}" value="#{bundle.ViewUsersDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewUsersEditLink}"/>
-                <br />
-                <h:commandLink action="#{usersController.prepareCreate}" value="#{bundle.ViewUsersCreateLink}" />
-                <br />
-                <h:commandLink action="#{usersController.prepareList}" value="#{bundle.ViewUsersShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewUsersIndexLink}"/>
+                <h:commandLink styleClass="w3-button w3-red" action="#{usersController.destroyAndView}" value="#{bundle.ViewUsersDestroyLink}"/>
+                <h:link styleClass="w3-button w3-orange" outcome="Edit" value="#{bundle.ViewUsersEditLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{usersController.prepareCreate}" value="#{bundle.ViewUsersCreateLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{usersController.prepareList}" value="#{bundle.ViewUsersShowAllLink}"/>
 
             </h:form>
         </ui:define>

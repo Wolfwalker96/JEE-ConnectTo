@@ -19,14 +19,8 @@
                     <h:outputText value="#{usersController.pagination.pageFirstItem + 1}..#{usersController.pagination.pageLastItem + 1}/#{usersController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{usersController.previous}" value="#{bundle.Previous} #{usersController.pagination.pageSize}" rendered="#{usersController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{usersController.next}" value="#{bundle.Next} #{usersController.pagination.pageSize}" rendered="#{usersController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{usersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUsersTitle_idUsers}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idUsers}"/>
-                        </h:column>
-                        <h:column>
+                    <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{usersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                                                <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsersTitle_name}"/>
                             </f:facet>
@@ -34,27 +28,18 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUsersTitle_password}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.password}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{usersController.prepareView}" value="#{bundle.ListUsersViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{usersController.prepareEdit}" value="#{bundle.ListUsersEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{usersController.destroy}" value="#{bundle.ListUsersDestroyLink}"/>
+                            <h:commandLink styleClass="w3-button w3-teal" action="#{usersController.prepareView}" value="#{bundle.ListUsersViewLink}"/>
+                            <h:commandLink styleClass="w3-button w3-orange" action="#{usersController.prepareEdit}" value="#{bundle.ListUsersEditLink}"/>
+                            <h:commandLink styleClass="w3-button w3-red" action="#{usersController.destroy}" value="#{bundle.ListUsersDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{usersController.prepareCreate}" value="#{bundle.ListUsersCreateLink}"/>
+                <h:commandLink  styleClass="w3-button w3-green" action="#{usersController.prepareCreate}" value="#{bundle.ListUsersCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListUsersIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

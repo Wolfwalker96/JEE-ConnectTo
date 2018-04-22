@@ -15,21 +15,16 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateUsersLabel_idUsers}" for="idUsers" />
-                    <h:inputText id="idUsers" value="#{usersController.selected.idUsers}" title="#{bundle.CreateUsersTitle_idUsers}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_idUsers}"/>
                     <h:outputLabel value="#{bundle.CreateUsersLabel_name}" for="name" />
                     <h:inputText id="name" value="#{usersController.selected.name}" title="#{bundle.CreateUsersTitle_name}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_name}"/>
                     <h:outputLabel value="#{bundle.CreateUsersLabel_password}" for="password" />
-                    <h:inputText id="password" value="#{usersController.selected.password}" title="#{bundle.CreateUsersTitle_password}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_password}"/>
+                    <h:inputSecret id="password" value="#{usersController.selected.password}" title="#{bundle.CreateUsersTitle_password}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_password}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{usersController.create}" value="#{bundle.CreateUsersSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-green" action="#{usersController.create}" value="#{bundle.CreateUsersSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{usersController.prepareList}" value="#{bundle.CreateUsersShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink action="#{usersController.prepareList}" value="#{bundle.CreateUsersShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateUsersIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

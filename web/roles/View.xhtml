@@ -15,23 +15,14 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewRolesLabel_idRoles}"/>
-                    <h:outputText value="#{rolesController.selected.idRoles}" title="#{bundle.ViewRolesTitle_idRoles}"/>
                     <h:outputText value="#{bundle.ViewRolesLabel_name}"/>
                     <h:outputText value="#{rolesController.selected.name}" title="#{bundle.ViewRolesTitle_name}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{rolesController.destroyAndView}" value="#{bundle.ViewRolesDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewRolesEditLink}"/>
-                <br />
-                <h:commandLink action="#{rolesController.prepareCreate}" value="#{bundle.ViewRolesCreateLink}" />
-                <br />
-                <h:commandLink action="#{rolesController.prepareList}" value="#{bundle.ViewRolesShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewRolesIndexLink}"/>
+                <h:commandLink styleClass="w3-button w3-red" action="#{rolesController.destroyAndView}" value="#{bundle.ViewRolesDestroyLink}"/>
+                <h:link styleClass="w3-button w3-orange" outcome="Edit" value="#{bundle.ViewRolesEditLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{rolesController.prepareCreate}" value="#{bundle.ViewRolesCreateLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{rolesController.prepareList}" value="#{bundle.ViewRolesShowAllLink}"/>
 
             </h:form>
         </ui:define>

@@ -19,13 +19,7 @@
                     <h:outputText value="#{rolesController.pagination.pageFirstItem + 1}..#{rolesController.pagination.pageLastItem + 1}/#{rolesController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{rolesController.previous}" value="#{bundle.Previous} #{rolesController.pagination.pageSize}" rendered="#{rolesController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{rolesController.next}" value="#{bundle.Next} #{rolesController.pagination.pageSize}" rendered="#{rolesController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{rolesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRolesTitle_idRoles}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idRoles}"/>
-                        </h:column>
+                    <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{rolesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListRolesTitle_name}"/>
@@ -36,19 +30,16 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{rolesController.prepareView}" value="#{bundle.ListRolesViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{rolesController.prepareEdit}" value="#{bundle.ListRolesEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{rolesController.destroy}" value="#{bundle.ListRolesDestroyLink}"/>
+                            <h:commandLink styleClass="w3-button w3-teal" action="#{rolesController.prepareView}" value="#{bundle.ListRolesViewLink}"/>
+                            <h:commandLink styleClass="w3-button w3-orange" action="#{rolesController.prepareEdit}" value="#{bundle.ListRolesEditLink}"/>
+                            <h:commandLink styleClass="w3-button w3-red" action="#{rolesController.destroy}" value="#{bundle.ListRolesDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{rolesController.prepareCreate}" value="#{bundle.ListRolesCreateLink}"/>
+                <h:commandLink  styleClass="w3-button w3-green" action="#{rolesController.prepareCreate}" value="#{bundle.ListRolesCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListRolesIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

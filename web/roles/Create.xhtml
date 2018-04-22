@@ -15,19 +15,14 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateRolesLabel_idRoles}" for="idRoles" />
-                    <h:inputText id="idRoles" value="#{rolesController.selected.idRoles}" title="#{bundle.CreateRolesTitle_idRoles}" required="true" requiredMessage="#{bundle.CreateRolesRequiredMessage_idRoles}"/>
                     <h:outputLabel value="#{bundle.CreateRolesLabel_name}" for="name" />
                     <h:inputText id="name" value="#{rolesController.selected.name}" title="#{bundle.CreateRolesTitle_name}" required="true" requiredMessage="#{bundle.CreateRolesRequiredMessage_name}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{rolesController.create}" value="#{bundle.CreateRolesSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-green" action="#{rolesController.create}" value="#{bundle.CreateRolesSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{rolesController.prepareList}" value="#{bundle.CreateRolesShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink action="#{rolesController.prepareList}" value="#{bundle.CreateRolesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateRolesIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

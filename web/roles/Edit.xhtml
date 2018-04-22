@@ -15,20 +15,12 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditRolesLabel_idRoles}" for="idRoles" />
-                    <h:inputText id="idRoles" value="#{rolesController.selected.idRoles}" title="#{bundle.EditRolesTitle_idRoles}" required="true" requiredMessage="#{bundle.EditRolesRequiredMessage_idRoles}"/>
                     <h:outputLabel value="#{bundle.EditRolesLabel_name}" for="name" />
                     <h:inputText id="name" value="#{rolesController.selected.name}" title="#{bundle.EditRolesTitle_name}" required="true" requiredMessage="#{bundle.EditRolesRequiredMessage_name}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{rolesController.update}" value="#{bundle.EditRolesSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditRolesViewLink}"/>
-                <br />
-                <h:commandLink action="#{rolesController.prepareList}" value="#{bundle.EditRolesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditRolesIndexLink}" />
+                <h:commandLink styleClass="w3-button w3-green" action="#{rolesController.update}" value="#{bundle.EditRolesSaveLink}"/>
+                <h:link styleClass="w3-button w3-teal" outcome="View" value="#{bundle.EditRolesViewLink}"/>
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{rolesController.prepareList}" value="#{bundle.EditRolesShowAllLink}" immediate="true"/>
             </h:form>
         </ui:define>
     </ui:composition>
