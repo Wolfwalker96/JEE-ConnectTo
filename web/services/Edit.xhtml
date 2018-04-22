@@ -22,15 +22,13 @@
                     <h:outputLabel value="#{bundle.EditServicesLabel_credential}" for="credential" />
                     <h:inputText id="credential" value="#{servicesController.selected.credential}" title="#{bundle.EditServicesTitle_credential}" required="true" requiredMessage="#{bundle.EditServicesRequiredMessage_credential}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{servicesController.update}" value="#{bundle.EditServicesSaveLink}"/>
+                                <br />
+                <br />
+                <h:commandLink styleClass="w3-button w3-green" action="#{servicesController.update}" value="#{bundle.EditServicesSaveLink}"/>
+                <h:link styleClass="w3-button w3-light-green" outcome="View" value="#{bundle.EditServicesViewLink}"/>
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{servicesController.prepareList}" value="#{bundle.EditServicesShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditServicesViewLink}"/>
-                <br />
-                <h:commandLink action="#{servicesController.prepareList}" value="#{bundle.EditServicesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditServicesIndexLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

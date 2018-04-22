@@ -7,7 +7,7 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ViewServicesTitle}"></h:outputText>
+            <h:outputText value="#{bundle.ViewServicesTitle}"></h:outputText> : <h:outputText value="#{servicesController.selected.name}"/>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -23,9 +23,10 @@
                     <h:outputText value="#{servicesController.selected.credential}" title="#{bundle.ViewServicesTitle_credential}"/>
                 </h:panelGrid>
                 <br />
-                <h:outputText value="#{bundle.ListSignalsTitle}"></h:outputText>
+                <h2><h:outputText value="#{bundle.ListSignalsTitle}"></h:outputText></h2>
                 <h:outputText escape="false" value=" #{bundle.ListSignalsEmpty}" rendered="#{servicesController.selected.signalsCollection.size() == 0}"/>
-                <h:dataTable value="#{servicesController.selected.signalsCollection}" var="signal" border="0" rendered="#{servicesController.selected.signalsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                <h:commandLink styleClass="w3-button w3-green" action="#{signalsController.prepareCreate(servicesController.selected)}" value="#{bundle.ListSignalsCreateLink}" rendered="#{servicesController.selected.signalsCollection.size() == 0}"/>
+                <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{servicesController.selected.signalsCollection}" var="signal" border="0" rendered="#{servicesController.selected.signalsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSignalsTitle_name}"/>
@@ -34,18 +35,18 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
+                                <h:commandLink styleClass="w3-button w3-green" action="#{signalsController.prepareCreate(servicesController.selected)}" value="#{bundle.ListSignalsCreateLink}"/>
                             </f:facet>
                             <h:commandLink styleClass="w3-button w3-teal" action="#{signalsController.prepareView(signal.idSignals)}" value="#{bundle.ListSignalsViewLink}"/>
                             <h:commandLink styleClass="w3-button w3-orange" action="#{signalsController.prepareEdit(signal.idSignals)}" value="#{bundle.ListSignalsEditLink}"/>
                             <h:commandLink styleClass="w3-button w3-red" action="#{signalsController.destroy(signal.idSignals)}" value="#{bundle.ListSignalsDestroyLink}"/>
                         </h:column>
                 </h:dataTable>
-                <h:commandLink action="#{signalsController.prepareCreate(servicesController.selected)}" value="#{bundle.ListSignalsCreateLink}"/>
                 <br/>
-                <h:outputText value="#{bundle.ListActionsTitle}"></h:outputText>
+                <h2><h:outputText value="#{bundle.ListActionsTitle}"></h:outputText></h2>
                 <h:outputText escape="false" value=" #{bundle.ListActionsEmpty}" rendered="#{servicesController.selected.actionsCollection.size() == 0}"/>
-                <h:dataTable value="#{servicesController.selected.actionsCollection}" var="action" border="0" rendered="#{servicesController.selected.actionsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                <h:commandLink styleClass="w3-button w3-green" action="#{actionsController.prepareCreate(servicesController.selected)}" value="#{bundle.ListActionsCreateLink}" rendered="#{servicesController.selected.actionsCollection.size() == 0}"/>
+                <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{servicesController.selected.actionsCollection}" var="action" border="0" rendered="#{servicesController.selected.actionsCollection.size() > 0}" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListActionsTitle_name}"/>
@@ -54,27 +55,21 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
+                                <h:commandLink styleClass="w3-button w3-green" action="#{actionsController.prepareCreate(servicesController.selected)}" value="#{bundle.ListActionsCreateLink}"/>
                             </f:facet>
                             <h:commandLink styleClass="w3-button w3-teal" action="#{actionsController.prepareView(action.idActions)}" value="#{bundle.ListSignalsViewLink}"/>
                             <h:commandLink styleClass="w3-button w3-orange" action="#{actionsController.prepareEdit(action.idActions)}" value="#{bundle.ListSignalsEditLink}"/>
                             <h:commandLink styleClass="w3-button w3-red" action="#{actionsController.destroy(action.idActions)}" value="#{bundle.ListSignalsDestroyLink}"/>
                         </h:column>
                 </h:dataTable>
-                <h:commandLink action="#{actionsController.prepareCreate(servicesController.selected)}" value="#{bundle.ListActionsCreateLink}"/>
                 <br/>
-                <h:commandLink action="#{servicesController.destroyAndView}" value="#{bundle.ViewServicesDestroyLink}"/>
+                <br/>
+                <h:commandLink styleClass="w3-button w3-red" action="#{servicesController.destroyAndView}" value="#{bundle.ViewServicesDestroyLink}"/>
+                <h:link styleClass="w3-button w3-orange" outcome="Edit" value="#{bundle.ViewServicesEditLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{servicesController.prepareCreate}" value="#{bundle.ViewServicesCreateLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{servicesController.prepareList}" value="#{bundle.ViewServicesShowAllLink}"/>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundle.ViewServicesEditLink}"/>
-                <br />
-                <h:commandLink action="#{servicesController.prepareCreate}" value="#{bundle.ViewServicesCreateLink}" />
-                <br />
-                <h:commandLink action="#{servicesController.prepareList}" value="#{bundle.ViewServicesShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewServicesIndexLink}"/>
-
             </h:form>
         </ui:define>
     </ui:composition>

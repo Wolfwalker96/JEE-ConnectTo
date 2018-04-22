@@ -23,13 +23,10 @@
                     <h:inputText id="credential" value="#{servicesController.selected.credential}" title="#{bundle.CreateServicesTitle_credential}" required="true" requiredMessage="#{bundle.CreateServicesRequiredMessage_credential}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{servicesController.create}" value="#{bundle.CreateServicesSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-green" action="#{servicesController.create}" value="#{bundle.CreateServicesSaveLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{servicesController.prepareList}" value="#{bundle.CreateServicesShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink action="#{servicesController.prepareList}" value="#{bundle.CreateServicesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateServicesIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
