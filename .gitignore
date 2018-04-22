@@ -231,3 +231,5 @@ pip-log.txt
 nbproject/private/private.properties
 
 web/WEB-INF/glassfish-resources.xml
+
+*/.idea/*
