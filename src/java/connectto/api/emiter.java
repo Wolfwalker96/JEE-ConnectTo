@@ -12,11 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import connectto.facades.ServicesFacade;
-import connectto.entities.Services;
-import connectto.entities.Actions;
-import connectto.entities.Signals;
-import connectto.entities.Conections;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.net.HttpURLConnection;
@@ -24,15 +19,18 @@ import java.net.URL;
 import java.io.DataOutputStream;
 import java.util.List;
 import java.util.Collection;
-import java.util.Map;
-import javax.persistence.Cache;
-import javax.persistence.EntityGraph;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnitUtil;
-import javax.persistence.Query;
-import javax.persistence.SynchronizationType;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.metamodel.Metamodel;
+import javax.annotation.Resource;
+import javax.persistence.PersistenceUnit;
+import javax.transaction.UserTransaction;
+import connectto.entities.Services;
+import connectto.entities.Signals;
+import connectto.entities.Conections;
+import java.io.InputStream;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 
 /**
  *
@@ -41,7 +39,10 @@ import javax.persistence.metamodel.Metamodel;
 @WebServlet(name = "receive", urlPatterns = {"/receive"})
 public class emiter extends HttpServlet {
     
-    @PersistenceContext(unitName = "ConnectToPU")
+    //@Resource
+    //UserTransaction userTx;
+    
+    @PersistenceUnit
     EntityManagerFactory emFactory;
 
     /**
@@ -58,12 +59,14 @@ public class emiter extends HttpServlet {
             String credential = request.getParameter("credential");
             String signal_name = request.getParameter("signal");
             EntityManager em = emFactory.createEntityManager();
+            //try{
+            //userTx.begin();
             List<Services> services = em
                     .createNamedQuery("Services.findByCredential")
-                    .setParameter(":credential", credential)
+                    .setParameter("credential", credential)
                     .getResultList();
             
-            if(services.size()<0){
+            if(services.size()>0){
                 Collection<Signals> signals = services.get(0).getSignalsCollection();
                 for(Signals signal : signals){
                     if(signal.getName().equals(signal_name)){
@@ -71,13 +74,16 @@ public class emiter extends HttpServlet {
                             System.out.println(connection.getIdSignals().getFullName()+" -> "+connection.getIdActions().getFullName());
                             String url_to_call = connection.getIdActions().getUrl();
                             URL url = new URL(url_to_call);
-                            HttpURLConnection http = (HttpURLConnection) url.openConnection();
-                                DataOutputStream wr = new DataOutputStream (http.getOutputStream());
-                                wr.close();
+                            InputStream is = url.openStream();
+                            is.close();
                         }
                     }
                 }
             }
+            //userTx.commit();
+            //}catch(Exception e){
+            //    e.printStackTrace();
+            //}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
