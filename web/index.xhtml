@@ -9,7 +9,21 @@
             <h:outputText value="ConnectTo"></h:outputText>
         </ui:define>
         <ui:define name="body">
-
+            <h:panelGroup rendered="#{empty request.remoteUser}">
+                <h2>Login</h2>
+                <form class="w3-container" method="POST" action="j_security_check">                
+                    <label>Username</label>
+                    <input class="w3-input" type="text" name="j_username" /> 
+                    <label>Password</label>
+                    <input class="w3-input" type="password" name="j_password" />
+                    <br />
+                    <input class="w3-button w3-block w3-teal" type="submit" value="Login" />                        
+                </form>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{not empty request.remoteUser}">
+                <h2>Welcome !</h2>
+            </h:panelGroup>
+            <br />
         </ui:define>
     </ui:composition>
 
