@@ -6,9 +6,7 @@
 package connectto.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,16 +14,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author dylan.santosde
+ * @author cedric.pahud
  */
 @Entity
 @Table(name = "roles")
@@ -47,8 +43,6 @@ public class Roles implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRoles")
-    private Collection<Users> usersCollection;
 
     public Roles() {
     }
@@ -78,15 +72,6 @@ public class Roles implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Users> getUsersCollection() {
-        return usersCollection;
-    }
-
-    public void setUsersCollection(Collection<Users> usersCollection) {
-        this.usersCollection = usersCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -109,7 +94,7 @@ public class Roles implements Serializable {
 
     @Override
     public String toString() {
-        return "connectto.Roles[ idRoles=" + idRoles + " ]";
+        return "connectto.entities.Roles[ idRoles=" + idRoles + " ]";
     }
     
 }
