@@ -134,6 +134,7 @@ public class UsersController implements Serializable {
 
     public String update() {
         try {
+            current.setPassword(hashPass(current.getPassword()));
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsersUpdated"));
             return "View";

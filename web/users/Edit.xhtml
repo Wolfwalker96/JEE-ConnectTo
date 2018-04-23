@@ -18,7 +18,7 @@
                     <h:outputLabel value="#{bundle.EditUsersLabel_name}" for="name" />
                     <h:inputText id="name" value="#{usersController.selected.name}" title="#{bundle.EditUsersTitle_name}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_name}"/>
                     <h:outputLabel value="#{bundle.EditUsersLabel_password}" for="password" />
-                    <h:inputText id="password" value="#{usersController.selected.password}" title="#{bundle.EditUsersTitle_password}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_password}"/>
+                    <h:inputSecret id="password" value="#{usersController.selected.password}" title="#{bundle.EditUsersTitle_password}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_password}"/>
                 </h:panelGrid>
                 <h:commandLink styleClass="w3-button w3-green" action="#{usersController.update}" value="#{bundle.EditUsersSaveLink}"/>
                 <h:link styleClass="w3-button w3-teal" outcome="View" value="#{bundle.EditUsersViewLink}"/>
