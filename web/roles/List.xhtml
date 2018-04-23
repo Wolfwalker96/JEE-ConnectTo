@@ -19,7 +19,7 @@
                     <h:outputText value="#{rolesController.pagination.pageFirstItem + 1}..#{rolesController.pagination.pageLastItem + 1}/#{rolesController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{rolesController.previous}" value="#{bundle.Previous} #{rolesController.pagination.pageSize}" rendered="#{rolesController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{rolesController.next}" value="#{bundle.Next} #{rolesController.pagination.pageSize}" rendered="#{rolesController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{rolesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{rolesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListRolesTitle_name}"/>
