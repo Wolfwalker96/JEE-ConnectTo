@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRolesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRolesLabel_name}"/>
+                    <h:outputText value="#{rolesController.selected.name}" title="#{bundle.ViewRolesTitle_name}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink styleClass="w3-button w3-red" action="#{rolesController.destroyAndView}" value="#{bundle.ViewRolesDestroyLink}"/>
+                <h:link styleClass="w3-button w3-orange" outcome="Edit" value="#{bundle.ViewRolesEditLink}"/>
+                <h:commandLink styleClass="w3-button w3-green" action="#{rolesController.prepareCreate}" value="#{bundle.ViewRolesCreateLink}" />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{rolesController.prepareList}" value="#{bundle.ViewRolesShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
