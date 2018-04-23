@@ -15,7 +15,7 @@
 	    <header>
                 <div class="w3-bar w3-dark-grey">
                     <h:link styleClass="w3-bar-item w3-button" outcome="/index" value="Home"/>
-                    <h:panelGroup rendered="#{empty request.remoteUser}"><!-- Must be not empty (empty only for test)-->
+                    <h:panelGroup rendered="#{true}"><!-- Must be not empty (empty only for test)-->
                         <h:link styleClass="w3-bar-item w3-button" outcome="/services/List" value="Services"/>
                         <h:link styleClass="w3-bar-item w3-button" outcome="/actions/List" value="Actions"/>
                         <h:link styleClass="w3-bar-item w3-button" outcome="/conections/List" value="Connections"/>
@@ -23,6 +23,7 @@
                         <h:form>
                             <h:commandLink styleClass="w3-bar-item w3-button w3-right" value="Logout" action="#{auth.logout}" />
                         </h:form>
+                        <h:outputLabel styleClass="w3-bar-item w3-right" value="#{request.remoteUser}"/>
                     </h:panelGroup>
                 </div>
 	    </header>
