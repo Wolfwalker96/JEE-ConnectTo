@@ -31,9 +31,15 @@ public class ServicesFacade extends AbstractFacade<Services> {
         super(Services.class);
     }
     
-    public Collection<Services> searchByName(String name){
-        return em.createNamedQuery("Services.searchByName")
+    public Collection<Services> search(String name){
+        return search(name, "", "");
+    }
+    
+    public Collection<Services> search(String name, String description, String credential){
+        return em.createNamedQuery("Services.search")
                     .setParameter("name", name)
+                    .setParameter("description", description)
+                    .setParameter("credential", credential)
                     .getResultList();
     }
     

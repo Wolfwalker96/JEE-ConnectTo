@@ -30,7 +30,9 @@ public class ServicesController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     
-    private String searchString;
+    private String searchName;
+    private String searchDescription;
+    private String searchCredential;
     private Collection<Services> searchResults;
 
     public ServicesController() {
@@ -210,20 +212,45 @@ public class ServicesController implements Serializable {
         return this.searchResults;
     }
     
-    public String getSearchString() {
-        return searchString;
+    public String getSearchName() {
+        return searchName;
     }
     
-    public void setSearchString(String searchString) {
-        this.searchString = searchString;
+    public void setSearchName(String searchString) {
+        this.searchName = searchString;
+    }
+    
+    public String getSearchDescription() {
+        return searchDescription;
+    }
+
+    public void setSearchDescription(String searchDescription) {
+        this.searchDescription = searchDescription;
+    }
+
+    public String getSearchCredential() {
+        return searchCredential;
+    }
+
+    public void setSearchCredential(String searchCredential) {
+        this.searchCredential = searchCredential;
     }
     
     public String prepareSearch() {
         return "Search";
     }
     
+    public String prepareAdvancedSearch() {
+        return "SearchAdvanced";
+    }
+    
     public Collection<Services> search(String query){
-        this.searchResults = ejbFacade.searchByName(query);
+        this.searchResults = ejbFacade.search(query);
+        return null;
+    }
+    
+    public Collection<Services> search(String name, String description, String credential){
+        this.searchResults = ejbFacade.search(name, description, credential);
         return null;
     }
 

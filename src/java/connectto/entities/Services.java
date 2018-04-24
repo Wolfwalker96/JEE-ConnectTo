@@ -35,6 +35,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Services.findByIdServices", query = "SELECT s FROM Services s WHERE s.idServices = :idServices")
     , @NamedQuery(name = "Services.findByName", query = "SELECT s FROM Services s WHERE s.name = :name")
     , @NamedQuery(name = "Services.searchByName", query = "SELECT s FROM Services s WHERE s.name LIKE CONCAT('%', :name, '%')")
+    , @NamedQuery(name = "Services.search", query = "SELECT s FROM Services s WHERE"
+            + " s.name LIKE CONCAT('%', :name, '%') AND"
+            + " s.description LIKE CONCAT('%', :description, '%') AND"
+            + " s.credential LIKE CONCAT('%', :credential, '%')")
     , @NamedQuery(name = "Services.findByDescription", query = "SELECT s FROM Services s WHERE s.description = :description")
     , @NamedQuery(name = "Services.findByCredential", query = "SELECT s FROM Services s WHERE s.credential = :credential")})
 public class Services implements Serializable {
