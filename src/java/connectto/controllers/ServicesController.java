@@ -6,6 +6,7 @@ import connectto.controllers.util.PaginationHelper;
 import connectto.facades.ServicesFacade;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -28,6 +29,9 @@ public class ServicesController implements Serializable {
     private connectto.facades.ServicesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    
+    private String searchString;
+    private Collection<Services> searchResults;
 
     public ServicesController() {
     }
@@ -72,6 +76,11 @@ public class ServicesController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
+    
+    public String prepareView(Services service) {
+        current = service;
+        return "View";
+    }
 
     public String prepareCreate() {
         current = new Services();
@@ -93,6 +102,11 @@ public class ServicesController implements Serializable {
     public String prepareEdit() {
         current = (Services) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "Edit";
+    }
+    
+    public String prepareEdit(Services service) {
+        current = service;
         return "Edit";
     }
 
@@ -190,6 +204,27 @@ public class ServicesController implements Serializable {
 
     public Services getServices(java.lang.Integer id) {
         return ejbFacade.find(id);
+    }
+    
+    public Collection<Services> getSearchResults(){
+        return this.searchResults;
+    }
+    
+    public String getSearchString() {
+        return searchString;
+    }
+    
+    public void setSearchString(String searchString) {
+        this.searchString = searchString;
+    }
+    
+    public String prepareSearch() {
+        return "Search";
+    }
+    
+    public Collection<Services> search(String query){
+        this.searchResults = ejbFacade.searchByName(query);
+        return null;
     }
 
     @FacesConverter(forClass = Services.class)

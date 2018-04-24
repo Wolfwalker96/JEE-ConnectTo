@@ -6,6 +6,7 @@
 package connectto.facades;
 
 import connectto.entities.Services;
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,6 +29,12 @@ public class ServicesFacade extends AbstractFacade<Services> {
 
     public ServicesFacade() {
         super(Services.class);
+    }
+    
+    public Collection<Services> searchByName(String name){
+        return em.createNamedQuery("Services.searchByName")
+                    .setParameter("name", name)
+                    .getResultList();
     }
     
 }

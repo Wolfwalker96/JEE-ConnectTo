@@ -17,8 +17,8 @@
                 <h:outputText escape="false" value="#{bundle.ListServicesEmpty}" rendered="#{servicesController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{servicesController.items.rowCount > 0}">
                     <h:outputText value="#{servicesController.pagination.pageFirstItem + 1}..#{servicesController.pagination.pageLastItem + 1}/#{servicesController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink styleClass="w3-teal w3-circle" action="#{servicesController.previous}" value="#{bundle.Previous} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink styleClass="w3-teal w3-circle" action="#{servicesController.next}" value="#{bundle.Next} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:commandLink action="#{servicesController.previous}" value="#{bundle.Previous} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{servicesController.next}" value="#{bundle.Next} #{servicesController.pagination.pageSize}" rendered="#{servicesController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{servicesController.items}" var="item" cellpadding="2" cellspacing="0" rowClasses="" rules="all">
                         <h:column>
                             <f:facet name="header">
@@ -50,6 +50,7 @@
                 </h:panelGroup>
                 <br />
                 <h:commandLink styleClass="w3-button w3-green" action="#{servicesController.prepareCreate}" value="#{bundle.ListServicesCreateLink}"/>
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{servicesController.prepareSearch}" value="#{bundle.ListServicesSearchLink}"/>
                 <br />
                 <br />
             </h:form>

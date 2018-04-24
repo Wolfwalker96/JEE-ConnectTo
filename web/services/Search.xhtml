@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.SearchServicesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:outputLabel value="#{bundle.SearchServicesLabel}"></h:outputLabel>
+                <h:inputText styleClass="w3-input" id="search" value="#{servicesController.searchString}"></h:inputText>
+                <br />
+                <h:commandButton styleClass="w3-button w3-teal" value="Search Services by name" action="#{servicesController.search(servicesController.searchString)}">
+                    <f:ajax execute="search" render="output"></f:ajax>
+                </h:commandButton>
+                <br/>
+                <br/>
+                <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" id="output" value="#{servicesController.getSearchResults()}" var="item" cellpadding="2" cellspacing="0" rowClasses="" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServicesTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServicesTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServicesTitle_credential}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.credential}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink styleClass="w3-teal w3-button" action="#{servicesController.prepareView(item)}" value="#{bundle.ListServicesViewLink}"/>
+                            <h:commandLink styleClass="w3-orange w3-button" action="#{servicesController.prepareEdit(item)}" value="#{bundle.ListServicesEditLink}"/>
+                        </h:column>
+                </h:dataTable>
+                <br />
+                <br />
+                <h:commandLink styleClass="w3-button w3-light-grey" action="#{servicesController.prepareList}" value="#{bundle.EditServicesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
