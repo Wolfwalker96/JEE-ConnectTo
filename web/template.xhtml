@@ -16,12 +16,15 @@
                 <div class="w3-bar w3-dark-grey">
                     <h:link styleClass="w3-bar-item w3-button" outcome="/index" value="Home"/>
                     <h:panelGroup rendered="#{not empty request.remoteUser}"><!-- Must be not empty (empty only for test)-->
-                        <h:link styleClass="w3-bar-item w3-button" outcome="/services/List" value="Services"/>
-                        <h:link styleClass="w3-bar-item w3-button" outcome="/actions/List" value="Actions"/>
                         <h:link styleClass="w3-bar-item w3-button" outcome="/conections/List" value="Connections"/>
-                        <h:link styleClass="w3-bar-item w3-button" outcome="/signals/List" value="Signals"/>
-                        <h:link styleClass="w3-bar-item w3-button" outcome="/users/List" value="Users"/>
-                        <h:link styleClass="w3-bar-item w3-button" outcome="/roles/List" value="Roles"/>
+                        <h:panelGroup rendered="#{request.isUserInRole('admin') or request.isUserInRole('service') }"><!-- Must be not empty (empty only for test)-->
+                            <h:link styleClass="w3-bar-item w3-button" outcome="/services/List" value="Services"/>
+                            <h:link styleClass="w3-bar-item w3-button" outcome="/actions/List" value="Actions"/>
+                            <h:link styleClass="w3-bar-item w3-button" outcome="/signals/List" value="Signals"/>
+                            <h:panelGroup rendered="#{request.isUserInRole('admin')}"><!-- Must be not empty (empty only for test)-->
+                                <h:link styleClass="w3-bar-item w3-button" outcome="/users/List" value="Users"/>
+                            </h:panelGroup>
+                        </h:panelGroup>
                         <h:form>
                             <h:commandLink styleClass="w3-bar-item w3-button w3-right" value="Logout" action="#{authController.logout}" />
                         </h:form>

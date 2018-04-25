@@ -35,6 +35,12 @@
             <web-resource-name>admin</web-resource-name>
             <description/>
             <url-pattern>/faces/Admin/*</url-pattern>
+            <url-pattern>/faces/conections/*</url-pattern>
+            <url-pattern>/faces/services/*</url-pattern>
+            <url-pattern>/faces/signals/*</url-pattern>
+            <url-pattern>/faces/actions/*</url-pattern>
+            <url-pattern>/faces/users/*</url-pattern>
+            <url-pattern>/faces/roles/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -47,6 +53,10 @@
             <web-resource-name>service</web-resource-name>
             <description/>
             <url-pattern>/faces/Service/*</url-pattern>
+            <url-pattern>/faces/conections/*</url-pattern>
+            <url-pattern>/faces/services/*</url-pattern>
+            <url-pattern>/faces/signals/*</url-pattern>
+            <url-pattern>/faces/actions/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -59,6 +69,7 @@
             <web-resource-name>standard</web-resource-name>
             <description/>
             <url-pattern>/faces/Standard/*</url-pattern>
+            <url-pattern>/faces/conections/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -69,7 +80,7 @@
         <auth-method>FORM</auth-method>
         <realm-name>ConnecTo</realm-name>
         <form-login-config>
-            <form-login-page>/login.jsp</form-login-page>
+            <form-login-page>/index.xhtml</form-login-page>
             <form-error-page>/error.jsp</form-error-page>
         </form-login-config>
     </login-config>
