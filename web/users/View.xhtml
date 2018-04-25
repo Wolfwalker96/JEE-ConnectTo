@@ -17,8 +17,6 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewUsersLabel_name}"/>
                     <h:outputText value="#{usersController.selected.name}" title="#{bundle.ViewUsersTitle_name}"/>
-                    <h:outputText value="#{bundle.ViewUsersLabel_password}"/>
-                    <h:outputText value="#{usersController.selected.password}" title="#{bundle.ViewUsersTitle_password}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink styleClass="w3-button w3-red" action="#{usersController.destroyAndView}" value="#{bundle.ViewUsersDestroyLink}"/>
