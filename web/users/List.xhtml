@@ -20,7 +20,7 @@
                     <h:commandLink action="#{usersController.previous}" value="#{bundle.Previous} #{usersController.pagination.pageSize}" rendered="#{usersController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{usersController.next}" value="#{bundle.Next} #{usersController.pagination.pageSize}" rendered="#{usersController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable styleClass="w3-table w3-table-all w3-hoverable" value="#{usersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
-                                                <h:column>
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsersTitle_name}"/>
                             </f:facet>

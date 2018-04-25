@@ -6,7 +6,9 @@
 package connectto.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,10 +16,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,6 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Users.findByName", query = "SELECT u FROM Users u WHERE u.name = :name")
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
 public class Users implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private Collection<UserRole> userRoleCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -109,7 +116,16 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "connectto.entities.Users[ idUsers=" + idUsers + " ]";
+        return name;
+    }
+
+    @XmlTransient
+    public Collection<UserRole> getUserRoleCollection() {
+        return userRoleCollection;
+    }
+
+    public void setUserRoleCollection(Collection<UserRole> userRoleCollection) {
+        this.userRoleCollection = userRoleCollection;
     }
     
 }
