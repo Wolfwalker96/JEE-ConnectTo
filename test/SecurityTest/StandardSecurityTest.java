@@ -1,6 +1,5 @@
-package Security;
+package SecurityTest;
 
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -10,40 +9,33 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class AdminSecurityTest {
+public class StandardSecurityTest {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
-  ArrayList<String> links;
   String testMessage;
+  String link;
 
   @Before
   public void setUp() throws Exception {
     driver = new ChromeDriver();
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    links = new ArrayList<>();
-    links.add("Connections");
-    links.add("Services");
-    links.add("Actions");
-    links.add("Signals");
-    links.add("Users");
+    link="Connections";
   }
 
   @Test
-  public void testAdminSecurity() throws Exception {
-    driver.get("http://localhost:8080/JEE-ConnectTo/");
+  public void testStandardSecurity() throws Exception {
+    driver.get("http://localhost:8080/JEE-ConnectTo/faces/index.xhtml");
+    driver.findElement(By.name("j_username")).click();
     driver.findElement(By.name("j_username")).clear();
-    driver.findElement(By.name("j_username")).sendKeys("testAdmin");
+    driver.findElement(By.name("j_username")).sendKeys("standard");
     driver.findElement(By.name("j_password")).clear();
     driver.findElement(By.name("j_password")).sendKeys("1234");
     driver.findElement(By.name("j_password")).sendKeys(Keys.ENTER);
-    for(int i =2;i<7;i++)
-    {
-        testMessage = driver.findElement(By.xpath("//div[@class='w3-bar w3-dark-grey']/child::a["+i+"]")).getText();
-        Assert.assertTrue("missing link"+(i-2), links.get(i-2).contains(testMessage));
-    }
+    testMessage = driver.findElement(By.xpath("//div[@class='w3-bar w3-dark-grey']/child::a[2]")).getText();
+    Assert.assertTrue("missing link", link.contains(testMessage));
   }
 
   @After
