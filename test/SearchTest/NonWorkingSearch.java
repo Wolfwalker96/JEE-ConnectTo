@@ -1,6 +1,5 @@
-package Security;
+package SearchTest;
 
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -10,40 +9,36 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class ServiceSecurityTest {
+public class NonWorkingSearch {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
-  ArrayList<String> links;
-  String testMessage;
 
   @Before
   public void setUp() throws Exception {
     driver = new ChromeDriver();
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    links = new ArrayList<>();
-    links.add("Connections");
-    links.add("Services");
-    links.add("Actions");
-    links.add("Signals");
   }
 
   @Test
-  public void testServiceSecurity() throws Exception {
+  public void testNonWorkingSearch() throws Exception {
     driver.get("http://localhost:8080/JEE-ConnectTo/faces/index.xhtml");
     driver.findElement(By.name("j_username")).click();
     driver.findElement(By.name("j_username")).clear();
-    driver.findElement(By.name("j_username")).sendKeys("testService");
+    driver.findElement(By.name("j_username")).sendKeys("admin");
     driver.findElement(By.name("j_password")).clear();
     driver.findElement(By.name("j_password")).sendKeys("1234");
-    driver.findElement(By.xpath("//input[@value='Login']")).click();
-    for(int i =2;i<6;i++)
-    {
-        testMessage = driver.findElement(By.xpath("//div[@class='w3-bar w3-dark-grey']/child::a["+i+"]")).getText();
-        Assert.assertTrue("missing link"+(i-2), links.get(i-2).contains(testMessage));
-    }
+    driver.findElement(By.name("j_password")).sendKeys(Keys.ENTER);
+    driver.findElement(By.linkText("Services")).click();
+    driver.findElement(By.linkText("Search a service")).click();
+    driver.findElement(By.id("j_idt29:search")).click();
+    driver.findElement(By.id("j_idt29:search")).clear();
+    driver.findElement(By.id("j_idt29:search")).sendKeys("S-1");
+    driver.findElement(By.id("j_idt29")).submit();
+    String message = driver.findElement(By.xpath("//table[@id='j_idt29:output']/tbody/child::tr[1]/child::td[1]")).getText();
+    Assert.assertTrue("result found", "".contains(message));
   }
 
   @After

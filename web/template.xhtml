@@ -23,6 +23,7 @@
                             <h:link styleClass="w3-bar-item w3-button" outcome="/signals/List" value="Signals"/>
                             <h:panelGroup rendered="#{request.isUserInRole('admin')}"><!-- Must be not empty (empty only for test)-->
                                 <h:link styleClass="w3-bar-item w3-button" outcome="/users/List" value="Users"/>
+                                <h:link styleClass="w3-bar-item w3-button" outcome="/userRole/List" value="Role"/>
                             </h:panelGroup>
                         </h:panelGroup>
                         <h:form>

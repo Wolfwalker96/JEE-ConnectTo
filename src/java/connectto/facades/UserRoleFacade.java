@@ -5,7 +5,7 @@
  */
 package connectto.facades;
 
-import connectto.entities.Users;
+import connectto.entities.UserRole;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author dylan.santosde
  */
 @Stateless
-public class UsersFacade extends AbstractFacade<Users> {
+public class UserRoleFacade extends AbstractFacade<UserRole> {
 
     @PersistenceContext(unitName = "ConnectToPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class UsersFacade extends AbstractFacade<Users> {
         return em;
     }
 
-    public UsersFacade() {
-        super(Users.class);
+    public UserRoleFacade() {
+        super(UserRole.class);
     }
     
 }
