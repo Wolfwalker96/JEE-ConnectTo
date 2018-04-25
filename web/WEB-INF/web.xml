@@ -40,7 +40,7 @@
             <url-pattern>/faces/signals/*</url-pattern>
             <url-pattern>/faces/actions/*</url-pattern>
             <url-pattern>/faces/users/*</url-pattern>
-            <url-pattern>/faces/roles/*</url-pattern>
+            <url-pattern>/faces/userRole/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
