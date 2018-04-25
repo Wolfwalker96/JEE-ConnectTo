@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <style></style>
+    </head>
+    <body>
+        <h1>I'm a Rotative Machine !!</h1>
+        <h2>I'm the ROR #12 !</h2>
+        <button onclick="sendAlert()">Oh ! Geeeeze ! I'm broken</button>
+    </body>
+    <script>
+        function sendAlert(){
+            fetch('http://127.0.0.1:8080/ConnectTo/emits?credential=ror.12&signal=alert').then();
+        }
+    </script>
+</html>
